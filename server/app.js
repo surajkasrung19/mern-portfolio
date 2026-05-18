@@ -11,9 +11,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://mern-portfolio-jade.vercel.app",
+    ],
+    credentials: true,
   })
 );
+
 app.use(express.json({ limit: "1mb" }));
 
 app.use("/api", healthRoutes);
