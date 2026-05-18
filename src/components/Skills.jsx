@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { motion } from "framer-motion";
 
 const fallbackSkills = [
@@ -22,7 +22,7 @@ const Skills = () => {
   useEffect(() => {
     const loadSkills = async () => {
       try {
-        const { data } = await axios.get("/api/skills");
+        const { data } = await api.get("/api/skills");
         if (Array.isArray(data) && data.length > 0) {
           setSkills(data);
         }
