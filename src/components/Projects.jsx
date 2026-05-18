@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MonitorUp, Star } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
@@ -25,7 +25,7 @@ const Projects = () => {
   useEffect(() => {
     const loadProjects = async () => {
       try {
-        const { data } = await axios.get("/api/projects");
+        const { data } = await api.get("/api/projects");
         if (Array.isArray(data) && data.length > 0) {
           setProjects(data);
         }
