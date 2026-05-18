@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { Edit3, LogOut, Plus, Trash2 } from "lucide-react";
 
 const emptyProject = {
@@ -55,10 +55,10 @@ const AdminPanel = () => {
     try {
       const [projectResponse, skillResponse, experienceResponse, contactResponse] =
         await Promise.all([
-        axios.get("/api/admin/projects", authHeaders),
-        axios.get("/api/admin/skills", authHeaders),
-        axios.get("/api/admin/experiences", authHeaders),
-        axios.get("/api/admin/contacts", authHeaders),
+        api.get("/api/admin/projects", authHeaders),
+        api.get("/api/admin/skills", authHeaders),
+        api.get("/api/admin/experiences", authHeaders),
+        api.get("/api/admin/contacts", authHeaders),
       ]);
 
       setProjects(projectResponse.data);
@@ -84,7 +84,7 @@ const AdminPanel = () => {
     setStatus("");
 
     try {
-      const { data } = await axios.post("/api/admin/login", login);
+      const { data } = await api.post("/api/admin/login", login);
       localStorage.setItem("portfolio-admin-token", data.token);
       setToken(data.token);
       setLogin({ username: "", password: "" });
@@ -107,10 +107,10 @@ const AdminPanel = () => {
 
     try {
       if (editingId) {
-        await axios.put(`/api/admin/projects/${editingId}`, payload, authHeaders);
+        await api.put(`/api/admin/projects/${editingId}`, payload, authHeaders);
         setStatus("Project updated.");
       } else {
-        await axios.post("/api/admin/projects", payload, authHeaders);
+        await api.post("/api/admin/projects", payload, authHeaders);
         setStatus("Project added.");
       }
 
@@ -138,7 +138,7 @@ const AdminPanel = () => {
   const deleteProject = async (id) => {
     if (!window.confirm("Delete this project?")) return;
 
-    await axios.delete(`/api/admin/projects/${id}`, authHeaders);
+    await api.delete(`/api/admin/projects/${id}`, authHeaders);
     loadAdminData();
   };
 
@@ -148,10 +148,10 @@ const AdminPanel = () => {
 
     try {
       if (editingSkillId) {
-        await axios.put(`/api/admin/skills/${editingSkillId}`, skillForm, authHeaders);
+        await api.put(`/api/admin/skills/${editingSkillId}`, skillForm, authHeaders);
         setStatus("Skill updated.");
       } else {
-        await axios.post("/api/admin/skills", skillForm, authHeaders);
+        await api.post("/api/admin/skills", skillForm, authHeaders);
         setStatus("Skill added.");
       }
 
@@ -176,7 +176,7 @@ const AdminPanel = () => {
   const deleteSkill = async (id) => {
     if (!window.confirm("Delete this skill?")) return;
 
-    await axios.delete(`/api/admin/skills/${id}`, authHeaders);
+    await api.delete(`/api/admin/skills/${id}`, authHeaders);
     loadAdminData();
   };
 
@@ -186,14 +186,14 @@ const AdminPanel = () => {
 
     try {
       if (editingExperienceId) {
-        await axios.put(
+        await api.put(
           `/api/admin/experiences/${editingExperienceId}`,
           experienceForm,
           authHeaders
         );
         setStatus("Experience updated.");
       } else {
-        await axios.post("/api/admin/experiences", experienceForm, authHeaders);
+        await api.post("/api/admin/experiences", experienceForm, authHeaders);
         setStatus("Experience added.");
       }
 
@@ -222,14 +222,14 @@ const AdminPanel = () => {
   const deleteExperience = async (id) => {
     if (!window.confirm("Delete this experience?")) return;
 
-    await axios.delete(`/api/admin/experiences/${id}`, authHeaders);
+    await api.delete(`/api/admin/experiences/${id}`, authHeaders);
     loadAdminData();
   };
 
   const deleteContact = async (id) => {
     if (!window.confirm("Delete this contact message?")) return;
 
-    await axios.delete(`/api/admin/contacts/${id}`, authHeaders);
+    await api.delete(`/api/admin/contacts/${id}`, authHeaders);
     loadAdminData();
   };
 
@@ -243,7 +243,7 @@ const AdminPanel = () => {
       <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
         <form
           onSubmit={handleLogin}
-          className="mx-auto max-w-md rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-2xl"
+          className="mx-auto max-w-md rounded-lg border border-white/10 bg-white/6 p-6 shadow-2xl"
         >
           <h1 className="text-3xl font-black">Portfolio Admin</h1>
           <p className="mt-2 text-sm text-gray-400">
