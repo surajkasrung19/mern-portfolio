@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { motion } from "framer-motion";
 import { Mail, MessageSquare, Send } from "lucide-react";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
@@ -36,7 +36,7 @@ const Contact = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      await axios.post("/api/contact", form);
+      await api.post("/api/contact", form);
       setSubmitted(true);
       setStatus({
         type: "success",
@@ -89,7 +89,7 @@ const Contact = () => {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-primary/40 hover:bg-white hover:shadow-sm dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-accent/40 dark:hover:bg-white/[0.07]"
+                className="flex items-center gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-primary/40 hover:bg-white hover:shadow-sm dark:border-white/10 dark:bg-white/4.5 dark:hover:border-accent/40 dark:hover:bg-white/[0.07]"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary dark:bg-white/10 dark:text-accent">
                   <Icon size={20} />
@@ -109,7 +109,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.6 }}
-          className="rounded-lg border border-slate-200 bg-slate-50 p-6 shadow-2xl shadow-slate-200/70 dark:border-white/10 dark:bg-white/[0.045] dark:shadow-black/20"
+          className="rounded-lg border border-slate-200 bg-slate-50 p-6 shadow-2xl shadow-slate-200/70 dark:border-white/10 dark:bg-white/4.5 dark:shadow-black/20"
         >
           <div className="mb-6 flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/15 text-accent">
