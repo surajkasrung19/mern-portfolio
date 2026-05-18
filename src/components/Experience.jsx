@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, CalendarDays } from "lucide-react";
 import { FaYoutube } from "react-icons/fa";
@@ -62,7 +62,7 @@ const Experience = () => {
   useEffect(() => {
     const loadExperiences = async () => {
       try {
-        const { data } = await axios.get("/api/experiences");
+        const { data } = await api.get("/api/experiences");
         if (Array.isArray(data) && data.length > 0) {
           setExperiences(data);
         }
@@ -108,7 +108,7 @@ const Experience = () => {
                 </span>
               </div>
 
-              <div className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-white/[0.045] md:block">
+              <div className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-white/4.5 md:block">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary dark:bg-white/10 dark:text-accent md:hidden">
                   <CalendarDays size={19} />
                 </span>
@@ -122,7 +122,7 @@ const Experience = () => {
                 </div>
               </div>
 
-              <div className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary/40 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.045] dark:shadow-none dark:hover:border-accent/40 dark:hover:bg-white/[0.07]">
+              <div className="group rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary/40 hover:shadow-lg dark:border-white/10 dark:bg-white/4.5 dark:shadow-none dark:hover:border-accent/40 dark:hover:bg-white/[0.07]">
                 <div className="flex items-center gap-3">
                   <BriefcaseBusiness size={20} className="text-primary" />
                   <h3 className="text-xl font-bold text-slate-950 dark:text-white">
