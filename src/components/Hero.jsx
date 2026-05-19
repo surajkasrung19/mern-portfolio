@@ -141,7 +141,7 @@ const Hero = () => {
                 <FaGithub size={18} />
               </a>
               <a
-                href="https://linkedin.com/"
+                href="https://www.linkedin.com/in/surajkasrung/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="grid h-11 w-11 place-items-center rounded-lg border border-slate-200 bg-white/85 text-slate-700 shadow-lg shadow-slate-200/60 backdrop-blur transition hover:border-primary/40 hover:text-slate-950 dark:border-white/10 dark:bg-white/10 dark:text-gray-200 dark:shadow-black/20 dark:hover:border-accent/50 dark:hover:text-white"
