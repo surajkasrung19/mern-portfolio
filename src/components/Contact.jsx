@@ -10,7 +10,7 @@ const CONTACT_EMAIL = "surajkasrung1904@gmail.com";
 
 const contactLinks = [
   { label: "Email", value: CONTACT_EMAIL, icon: Mail, href: `mailto:${CONTACT_EMAIL}` },
-  { label: "LinkedIn", value: "Connect professionally", icon: FaLinkedin, href: "https://linkedin.com/" },
+  { label: "LinkedIn", value: "Connect professionally", icon: FaLinkedin, href: "https://www.linkedin.com/in/surajkasrung/" },
   { label: "YouTube", value: "Watch Code With Suraj", icon: FaYoutube, href: YOUTUBE_URL },
   { label: "GitHub", value: "View repositories", icon: FaGithub, href: GITHUB_URL },
 ];
