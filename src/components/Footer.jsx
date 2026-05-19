@@ -41,7 +41,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/surajkasrung/"
             target="_blank"
             rel="noopener noreferrer"
             className="grid h-10 w-10 place-items-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-primary/40 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-300 dark:hover:border-accent/40 dark:hover:text-white"
